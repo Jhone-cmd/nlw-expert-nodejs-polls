@@ -10,12 +10,14 @@ const create_poll_1 = require("../routes/create-poll");
 const get_poll_1 = require("../routes/get-poll");
 const vote_on_poll_1 = require("../routes/vote-on-poll");
 const poll_results_1 = require("../websocket/poll-results");
+const welcome_1 = require("../routes/welcome");
 const app = (0, fastify_1.default)();
 app.register(cookie_1.default, {
     secret: process.env.SECRET_COOKIE,
     hook: 'onRequest',
 });
 app.register(websocket_1.default);
+app.register(welcome_1.welcomePage);
 app.register(create_poll_1.createPoll);
 app.register(get_poll_1.getPoll);
 app.register(vote_on_poll_1.voteOnPoll);
